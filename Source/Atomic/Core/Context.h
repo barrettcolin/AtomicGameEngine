@@ -297,9 +297,9 @@ private:
 
     /// Begin event send.
     void GlobalBeginSendEvent(Object* sender, StringHash eventType, VariantMap& eventData) {
+        eventSenders_.Push(sender);
         for (unsigned i = 0; i < globalEventListeners_.Size(); i++)
             globalEventListeners_[i]->BeginSendEvent(this, sender, eventType, eventData);
-        eventSenders_.Push(sender);
     }
 
     /// End event send. Clean up event receivers removed in the meanwhile.
